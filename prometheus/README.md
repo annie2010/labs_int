@@ -6,23 +6,26 @@
 
 # Prometheus Hangman Lab...
 
-## <img src="../assets/lab.png" width="auto" height="32"/> Mission
+## <img src="../assets/lab.png" width="auto" height="32"/> Your Mission
 
-> We're going to play a hangman game. The game consists of a
-> hangman service hangman and a CLI to submit guesses. The hangman
+> We're going to play a hangman game Prometheus Style!
+> The game consists of a hangman service and a CLI to submit guesses. The hangman
 > service queries a given dictionary to get a list of words for the guess
 > word. To play the game, we are going to leverage Prometheus metrics to
-> track good/bad guess counts as well as tracking win rates. Sounds cool?
+> track good/bad guess counts as well as tracking a tally of the win/loose rates.
+> Sounds cool?
 
-1. Instrument the hangman code base and add 2 prometheus counters to track your
-   good and bad guesses (see game.go).
-2. Next define a prometheus gauge to track your game results:
-   ie +1 for wins and -1 for loss (see tally.go)
-3. Install prometheus (see command below)
-   1. Configure the scraper to scrape your hangman service on a given port.
-4. Start prometheus (see command below)
-5. Start your hangman service
-6. You can now enjoy the fruits of your labor by firing off the provided hangman CLI (cmd/cli/main.go) and try out your guessing skills while watching your game performance in the prometheus dashboard (see command below)...
+1. Clone the [Labs Repo](https://github.com/gopherland/labs_int)
+2. Cd prometheus
+3. Instrument the hangman code base and add 2 prometheus metrics to track your
+   good and bad guesses (see metrics.go and game.go).
+4. Next define a prometheus gauge to track your game results:
+   ie +1 for wins and -1 for loss (see metrics.go and tally.go)
+5. Install prometheus (see lab template README.md)
+6. Configure the scraper to scrape your hangman service on a given port.
+7. Start your hangman service
+8. Run the provided hangman CLI (cmd/cli/main.go)
+9. You can now enjoy the fruits of your labor and try out your guessing skills while watching your game performance in the Prometheus dashboard...
 
 ## Commands
 
@@ -33,7 +36,7 @@
       cd /tmp
       wget https://github.com/prometheus/prometheus/releases/download/v2.18.0-rc.1/prometheus-2.18.0-rc.1.darwin-amd64.tar.gz
       tar -xvzf /tmp/prometheus-2.18.0-rc.1.darwin-amd64.tar.gz
-      IMPORTANT!! Make sure to copy the prometheus binary so that it is in your $PATH
+      # IMPORTANT!! -- Make sure the prometheus binary is on your $PATH
       ```
 
    2. For other platforms please see [Prometheus Install](https://prometheus.io/download)
