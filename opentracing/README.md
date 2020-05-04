@@ -47,14 +47,14 @@
 ## Commands
 
 1. Download and Install Docker on your machine [SKIP IF ALREADY INSTALLED!]
-   1. Please follow the [Docker For MY_PLATFORM install](https://www.docker.com/products/docker-desktop) instructions
-1. Start a Jaeger server
+   1. See [Docker install](https://www.docker.com/products/docker-desktop) instructions
+2. Start a Jaeger server
 
    ```shell
    docker run --name jaeger -p6831:6831/udp -p16686:16686 jaegertracing/all-in-one:latest
    ```
 
-1. Jaeger Dashboard
+3. Jaeger Dashboard
 
    ```shell
    open http://localhost:16686
