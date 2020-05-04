@@ -19,21 +19,28 @@
 > The Castle service returns either a 200 with a castle melted message if the
 > knight is the `NightKing` 😵 or a 417 error with *only NightKing can melt* otherwise.
 
-1. Instrument the Castle service by tracing incoming *melt* requests
-   1. Edit your Castle trace and add the following tags to the trace:
-      1. http.method
-      2. http.url
-      3. knight
-2. If the given Knight is *NightKing* add a log to the castle span to indicate `the castle is melted`.
-3. All other knights should produce a span error (internal/http.go).
-4. Span errors are indicated as follows:
+1. Instrument the Castle service (cmd/castle/root.go) by tracing incoming *melt* requests
+   1. Create a top level span for all new incoming requests
+   2. Decorate your span to indicate who is the knight trying to melt the castle
+   3. Edit your newSpanFromReq function child span and add the following info:
+      1. http.method=the incoming request method
+      2. http.url=the incoming request url
+      3. component=the component name that received the request
+   4. Trace the readQuest function
+      1. Create a new span from the given context
+      2. Add a tag action=castle.readquest
+      3. Add log to trace the name of the knight issuing a melt request
+         1. The message should be of the form `knight xxx requested a melt`
+   5. If the given Knight is *NightKing* add a log to the castle span to indicate `the castle is melted`.
+2. All other knights should produce a span error (internal/http.go:SpanError).
+3. Span errors are indicated as follows:
    1. Setting a span tag error=true
    2. Adding a structured log on the span using
       1. event=error
       2. message=only the NightKing can melt the castle
-5. Using the provided command start the Jaeger servicer
-6. In a separate terminal start your Castle and Knight services.
-7. Using the Jaeger Dashboard (see command below) validate that your traces are correctly tracking the workload by using different knights.
+4. Using the provided docker command start the Jaeger service
+5. In a separate terminals start your Castle and Knight services.
+6. Using the Jaeger Dashboard (see command below) validate that your traces are correctly tracking the workload by using different knights.
 
 ## Commands
 
