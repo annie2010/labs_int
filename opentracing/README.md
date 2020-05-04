@@ -52,16 +52,10 @@
    docker run --name jaeger -p6831:6831/udp -p16686:16686 jaegertracing/all-in-one:latest
    ```
 
-1. In one terminal launch prometheus with your custom scraper config file
-
-      ```shell
-      prometheus --config.file=config/prom_scraper.yml
-      ```
-
-1. Prometheus Dashboard
+2. Jaeger Dashboard
 
    ```shell
-   open http://localhost:9090/graph
+   open http://localhost:16686
    ```
 
 ---
