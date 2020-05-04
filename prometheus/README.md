@@ -18,9 +18,11 @@
    good and bad guesses (see game.go).
 2. Next define a prometheus gauge to track your game results:
    ie +1 for wins and -1 for loss (see tally.go)
-3. Install prometheus and configure the scraper to scrape your hangman service on a given port.
-4. Start your hangman service
-5. You can now enjoy the fruits of your labor by firing off the provided hangman CLI (cmd/cli/main.go) and try out your guessing skills while watching your game performance in the prometheus dashboard...
+3. Install prometheus (see command below)
+   1. Configure the scraper to scrape your hangman service on a given port.
+4. Start prometheus (see command below)
+5. Start your hangman service
+6. You can now enjoy the fruits of your labor by firing off the provided hangman CLI (cmd/cli/main.go) and try out your guessing skills while watching your game performance in the prometheus dashboard (see command below)...
 
 ## Commands
 
@@ -39,7 +41,7 @@
 1. In one terminal launch prometheus with your custom scraper config file
 
       ```shell
-      prometheus --config.file=~/gopherland/labs/prometheus/config/prom_scraper.yml
+      prometheus --config.file=config/prom_scraper.yml
       ```
 
 1. Prometheus Dashboard
