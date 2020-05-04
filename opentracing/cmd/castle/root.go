@@ -20,7 +20,7 @@ import (
 
 const (
 	app       = "Castle"
-	port      = ":4000"
+	port      = ":5501"
 	nightKing = "nightking"
 )
 

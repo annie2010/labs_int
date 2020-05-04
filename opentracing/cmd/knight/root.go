@@ -17,7 +17,7 @@ import (
 )
 
 const (
-	port = ":4005"
+	port = ":5500"
 	app  = "Knight"
 )
 
@@ -34,7 +34,7 @@ var (
 
 func init() {
 	rootCmd.Flags().StringVarP(&jaeger, "jaeger", "j", "localhost:6831", "Specify Jaeger address")
-	rootCmd.Flags().StringVarP(&castle, "castle", "c", "localhost:4000", "Specify a castle service address")
+	rootCmd.Flags().StringVarP(&castle, "castle", "c", "localhost:5501", "Specify a castle service address")
 }
 
 // Execute a command
