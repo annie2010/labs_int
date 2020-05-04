@@ -137,7 +137,7 @@ func readQuest(ctx context.Context, body io.ReadCloser) (internal.Quest, error) 
 	if err := json.NewDecoder(body).Decode(&q); err != nil {
 		return q, err
 	}
-	span.SetTag("action", "castle.quest")
+	span.SetTag("action", "castle.readQuest")
 	span.LogKV("message", fmt.Sprintf("%s requested a melt", q.Knight))
 
 	return q, nil
@@ -158,7 +158,7 @@ func writeResponse(ctx context.Context, w http.ResponseWriter) error {
 		internal.WriteErrOut(spanCtx, w, err)
 		return err
 	}
-	span.SetTag("action", "castle.melted")
+	span.SetTag("action", "castle.writeResponse")
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 
 	_, err = w.Write(raw)
