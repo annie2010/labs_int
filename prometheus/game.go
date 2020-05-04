@@ -1,8 +1,12 @@
 package hangman
 
-import (
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promauto"
+type Outcome int
+
+const (
+	DuplicateGuess Outcome = 1 << iota
+	GoodGuess
+	BadGuess
+	GameOver
 )
 
 // Game a hangman game
@@ -12,54 +16,34 @@ type Game struct {
 	Tally   *Tally `json:"tally"`
 }
 
-var (
-	promGood = promauto.NewCounter(prometheus.CounterOpts{
-		Name: "hangman_good_guess_count",
-		Help: "Counts number of good guesses",
-		ConstLabels: map[string]string{
-			"app":   "hangman",
-			"guess": "good",
-		},
-	})
-	promBad = promauto.NewCounter(prometheus.CounterOpts{
-		Name: "hangman_bad_guess_count",
-		Help: "Counts number of bad guesses",
-		ConstLabels: map[string]string{
-			"app":   "hangman",
-			"guess": "bad",
-		},
-	})
-)
-
 // NewGame initializes a hangman game
 func NewGame(word string) *Game {
 	return &Game{Word: word, Tally: NewTally([]rune(word)), Guesses: []rune{}}
 }
 
 // Guess a new letter
-func (g *Game) Guess(guess rune) {
-	g.validateGuess(guess)
+func (g *Game) Guess(guess rune) Outcome {
+	return g.validateGuess(guess)
 }
 
-func (g *Game) validateGuess(guess rune) {
+func (g *Game) validateGuess(guess rune) Outcome {
 	if g.Tally.Status == Won || g.Tally.Status == Lost {
-		return
+		return GameOver
 	}
 
 	if g.alreadyGuessed(guess) {
 		g.Tally.Status = AlreadyGuessed
-		return
+		return DuplicateGuess
 	}
 
 	g.Guesses = append(g.Guesses, guess)
-
-	if !g.inWord(guess) {
-		promBad.Inc()
-		g.Tally.TurnsLeft--
-	} else {
-		promGood.Inc()
+	defer g.Tally.Update([]rune(g.Word), g.Guesses)
+	if g.inWord(guess) {
+		return GoodGuess
 	}
-	g.Tally.Update([]rune(g.Word), g.Guesses)
+	g.Tally.TurnsLeft--
+
+	return BadGuess
 }
 
 func (g *Game) alreadyGuessed(guess rune) bool {

@@ -1,10 +1,5 @@
 package hangman
 
-import (
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promauto"
-)
-
 const (
 	// Active describes an in progress game
 	Active Status = iota
@@ -31,14 +26,6 @@ type (
 	}
 )
 
-var promTally = promauto.NewGauge(prometheus.GaugeOpts{
-	Name: "hangman_tally_total",
-	Help: "The total number of game won or lost",
-	ConstLabels: map[string]string{
-		"app": "hangman",
-	},
-})
-
 // NewTally initializes a tally
 func NewTally(word []rune) *Tally {
 	return &Tally{TurnsLeft: MaxGuesses, Letters: updateLetters(word, []rune{})}
@@ -48,11 +35,9 @@ func NewTally(word []rune) *Tally {
 func (t *Tally) Update(word, guesses []rune) {
 	t.Letters = updateLetters(word, guesses)
 	if !t.guessesLeft() {
-		promTally.Inc()
 		t.Status = Won
 	}
 	if t.TurnsLeft == 0 {
-		promTally.Dec()
 		t.Status = Lost
 	}
 }
