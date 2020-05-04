@@ -6,7 +6,7 @@
 
 # Prometheus Hangman Lab...
 
-## <img src="../../assets/lab.png" width="auto" height="32"/> Mission
+## <img src="../assets/lab.png" width="auto" height="32"/> Mission
 
 > We're going to play a hangman game. The game consists of a
 > hangman service hangman and a CLI to submit guesses. The hangman

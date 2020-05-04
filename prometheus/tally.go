@@ -1,10 +1,5 @@
 package hangman
 
-import (
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promauto"
-)
-
 const (
 	// Active describes an in progress game
 	Active Status = iota
@@ -31,8 +26,6 @@ type (
 	}
 )
 
-<<!!YOUR_CODE!!>> Define your prometheus tally gauge
-
 // NewTally initializes a tally
 func NewTally(word []rune) *Tally {
 	return &Tally{TurnsLeft: MaxGuesses, Letters: updateLetters(word, []rune{})}
@@ -40,7 +33,6 @@ func NewTally(word []rune) *Tally {
 
 // Update the tally with a new guess
 func (t *Tally) Update(word, guesses []rune) {
-	<<!!YOUR_CODE!!>> Manage your prom gauge
 	t.Letters = updateLetters(word, guesses)
 	if !t.guessesLeft() {
 		t.Status = Won

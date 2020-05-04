@@ -3,4 +3,4 @@ global:
   evaluation_interval: 5s
 
 scrape_configs:
-  - <<!!YOUR_CODE!!>> Specify scrape config for hangman
+  - <<!!YOUR_CODE!!>> Define your hangman service scraper.
