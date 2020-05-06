@@ -13,55 +13,46 @@
 ---
 ## <img src="../../assets/lab.png" width="auto" height="32"/> Mission
 
-> Package deal! Modulerize and publish a picker package to pick a word from a given word dictionary
+> Package deal! Implement two separate modules aka dictionary and picker. The dictionary module produces a list of words from a given dictionary. The picker modules picks a random word for the dictionary module.
 
-* In this lab, you are going to leverage an existing implementation and deploy it as a go module.
-* The picker package loads words from the given assets directory and randomly pick a new word.
-* The application contains both lib code and a binary.
-* You will need to use your own github account to publish your package
+* Clone the [Labs Repo](https://github.com/gopherland/labs_int)
+* cd modules
+* Dictionary Module (modules/dictionary)
+  * Leveraging the given tests and implement a dictionary loader.
+    * The loader loads a collection of words from file (see testdata)
+    * The loader should take a dictionary location and a list of words to exclude from the returned list
+* Picker Module (modules/picker)
+  * The picker package loads words from the directory module and randomly pick a new word.
+  * Initially make sure you can reference the dictionary from your own repo using the `replace` command in go.mod
+* Using the provided test suites. Test your entire application
+* Make sure the picker cli works as expected.
+* BONUS!
+  * Using your own github repo user, version and publish your own dictionary module.
+  * Change your picker to reference a class mate dictionary module.
 
 ### Commands
 
-* In your lab repo navigate to gopherland/labs/modules/picker
-* Create a new module file using the following command:
+* Publish your `dictionary` module (modules/dictionary):
+  * On github, create your own git repo using your own GIT_USER_HANDLE
+
   ```shell
-  go mod init github.com/YOUR_GIT_USER_HANDLE/labs/picker
-  ```
-* Run the test command to make sure the tests are still passing and coverage is good!
-* Run the main application and ensure it's working correctly
-* Ensure all exported items have documentation and code coverage is adequate
-* Using your own github account, create a new public repo named **picker**
-* Setup your git repo using:
-  ```shell
+  cd modules/dictionary
   git init
   git add .
   git commit -m 'Init drop'
-  git remote add origin git@github.com:YOUR_GIT_USER_HANDLE/picker.git
-  git push --set-upstream origin master
+  git remote add origin git@github.com:YOUR_GIT_USER_HANDLE/dictionary.git
+  git push -u origin master
+  # Tag your repo with version 0.1.0
+  git tag -a v0.1.0 -m 'Init drop'
+  git push origin v0.1.0
   ```
-* In cmd/main.go update the import path to use your new repo
-* In the root of your repo run your cli app
-  ```shell
-  go run cmd/main.go
-  go run cmd/main.go -dic musicians -dir assets
-  # Clean up your dependencies
-  go mod tidy
-  ```
-* Using semantic versioning tag your release
-  ```shell
-  git tags v1.0.0
-  git push --tags
-  ```
-* Checkout your docs and score card!
-  ```shell
-  open https://godoc.org/github.com/YOUR_GIT_USER_HANDLE/picker
-  open https://goreportcard.com/report/github.com/YOUR_GIT_USER_HANDLE/picker
-  ```
-* Update the README.md badge section with your own github handle
-* Congratulation! You've just built and published your very own go package!
 
-* [BONUS]: Download and use, your classmate packages
-* [BONUS] Use [Travis CI](https://travis-ci.org), add your repo and earn an extra badge!
+* Remove the replace directive in picker/go.mod as we are now going to use your published
+  dictionary module
+* In picker/main.go update the import path to use your published dictionary module handle
+* Run the picker app. You should see your dependency getting pulled!
+* Verify your go.mod file is now correctly referencing your new dictionary module!
+* BONUS: Rinse/Repeat the last 3 steps using a classmate dictionary module.
 
 ---
 <img src="../../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
