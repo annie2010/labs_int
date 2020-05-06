@@ -1,17 +1,13 @@
-<img src="../../assets/gophernand.png" align="right" width="128" height="auto"/>
+<img src="../assets/gophernand.png" align="right" width="128" height="auto"/>
 
 <br/>
 <br/>
 <br/>
-
-[![Build Status](https://travis-ci.org/derailed/picker.svg?branch=master)](https://travis-ci.org/derailed/picker)
-[![Go Report Card](https://goreportcard.com/badge/github.com/derailed/picker)](https://goreportcard.com/report/github.com/derailed/picker)
-[![GoDoc](https://godoc.org/github.com/derailed/picker?status.svg)](http://godoc.org/github.com/derailed/picker)
 
 # Package Lab
 
 ---
-## <img src="../../assets/lab.png" width="auto" height="32"/> Mission
+## <img src="../assets/lab.png" width="auto" height="32"/> Mission
 
 > Package deal!
 
@@ -57,5 +53,5 @@
 * BONUS: Rinse/Repeat the last 3 steps using a classmate dictionary module.
 
 ---
-<img src="../../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
+<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
