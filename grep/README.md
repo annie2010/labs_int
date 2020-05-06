@@ -39,16 +39,8 @@ go get -u golang.org/x/perf/cmd/benchstat
 ### Commands
 
 ```shell
-# Compare implementations
-go test --run xxx --bench V1 --count 10 --benchmem | tee v1.out
-# Ensure the variance is cool for a single run
-benchstat v1.out
-# Run the second implementation.
-go test --run xxx --bench V2 --count 10 --benchmem | tee v2.out
 # Normalize output so they have the same benchmark name
 sed -i '' 's/V1//g' v1.out && sed -i '' 's/V2//g' v2.out
-# Compare the two implementations
-benchstat v1.out v2.out
 ```
 
 ---
