@@ -4,7 +4,7 @@
 <br/>
 <br/>
 
-# Testing and Benchmarking Lab
+# Benchmarking Lab
 
 ---
 ## <img src="../assets/lab.png" width="auto" height="32"/> Mission
