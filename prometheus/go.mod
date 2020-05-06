@@ -1,5 +1,7 @@
 module github.com/gopherland/labs_int/prometheus/hangman
 
+go 1.14
+
 require (
 	github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -18,5 +20,3 @@ require (
 	github.com/stretchr/testify v1.2.2
 	golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4 // indirect
 )
-
-go 1.13
