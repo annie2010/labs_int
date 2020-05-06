@@ -2,7 +2,7 @@ module github.com/gopherland/labs_int/modules/picker
 
 go 1.14
 
-replace github.com/gopherland/labs_int/modules/dictionary => /Users/fernand/work/Training/imhotep/gopherland/level_int/labs/modules/dictionary
+replace github.com/gopherland/labs_int/modules/dictionary => ../dictionary
 
 require (
 	github.com/gookit/color v1.2.5
