@@ -1,9 +1,13 @@
+// Copyright 2020 Imhotep Software
+// All material is licensed under the Apache License Version 2.0
+// http://www.apache.org/licenses/LICENSE-2.0
+
 package internal
 
-import(
+import (
 	"bufio"
-	"os"
 	"fmt"
+	"os"
 )
 
 // Load loads a collection of words from a given a path.
