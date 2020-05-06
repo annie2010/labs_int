@@ -20,16 +20,16 @@
 * Clone the [Labs Repo](https://github.com/gopherland/labs_int)
 * cd modules
 * Dictionary Module (modules/dictionary)
-  * Leveraging the given tests and implement a dictionary loader.
+  * Leveraging the given tests, implement a dictionary loader.
     * The loader loads a collection of words from file (see testdata)
     * The loader should take a dictionary location and a list of words to exclude from the returned list
 * Picker Module (modules/picker)
   * The picker package loads words from the directory module and randomly pick a new word.
-  * Initially make sure you can reference the dictionary from your own repo using the `replace` command in go.mod
+  * Initially make sure you can reference the dictionary from your own repo using the `replace` directive in go.mod
 * Using the provided test suites. Test your entire application
 * Make sure the picker cli works as expected.
+* Using your own github repo user, version and publish your own dictionary module.
 * BONUS!
-  * Using your own github repo user, version and publish your own dictionary module.
   * Change your picker to reference a class mate dictionary module.
 
 ### Commands
