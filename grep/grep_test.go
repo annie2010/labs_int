@@ -8,28 +8,30 @@ import (
 	"testing"
 
 	"github.com/gopherland/labs_int/grep"
-	"gotest.tools/assert"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestWordCountV1(t *testing.T) {
+	samples := genSamples(t)
+
 	uu := map[string]struct {
 		text string
 		e    int64
 	}{
 		"semi-cols": {
-			text: "*** START OF THIS PROJECT GUTENBERG EBOOK MOBY DICK; OR THE WHALE ***",
+			text: samples[0],
 			e:    1,
 		},
 		"dash": {
-			text: "MOBY-DICK;",
+			text: samples[1],
 			e:    1,
 		},
-		"quote": {
-			text: `“Moby Dick?” shouted Ahab. “Do ye know the white whale then, Tash?”`,
+		"quotes": {
+			text: samples[2],
 			e:    1,
 		},
-		"special": {
-			text: "seen—Moby Dick—Moby Dick!”",
+		"special-dash": {
+			text: samples[3],
 			e:    2,
 		},
 	}
@@ -44,24 +46,26 @@ func TestWordCountV1(t *testing.T) {
 }
 
 func TestWordCountV2(t *testing.T) {
+	samples := genSamples(t)
+
 	uu := map[string]struct {
 		text string
 		e    int64
 	}{
 		"semi-cols": {
-			text: "*** START OF THIS PROJECT GUTENBERG EBOOK MOBY DICK; OR THE WHALE ***",
+			text: samples[0],
 			e:    1,
 		},
 		"dash": {
-			text: "MOBY-DICK;",
+			text: samples[1],
 			e:    1,
 		},
 		"quotes": {
-			text: `“Moby Dick?” shouted Ahab. “Do ye know the white whale then, Tash?”`,
+			text: samples[2],
 			e:    1,
 		},
 		"special-dash": {
-			text: "seen—Moby Dick—Moby Dick!”",
+			text: samples[3],
 			e:    2,
 		},
 	}
@@ -76,21 +80,34 @@ func TestWordCountV2(t *testing.T) {
 }
 
 func BenchmarkWordCountV1(b *testing.B) {
-	const text = `Moby Dick?” shouted Ahab. “Do ye know the white whale then, Tash?`
+	const sample = `“Moby Dick?” shouted Ahab. “Do ye know the white whale then, Tash?”`
 
 	b.ReportAllocs()
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
-		grep.WordCount("moby", text)
+		grep.WordCount("moby", sample)
 	}
 }
 
 func BenchmarkWordCountV2(b *testing.B) {
-	const text = `Moby Dick?” shouted Ahab. “Do ye know the white whale then, Tash?`
+	sample := genSamples(b)[2]
 
 	b.ReportAllocs()
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
-		grep.WordCountBytes("moby", text)
+		grep.WordCountBytes("moby", sample)
+	}
+}
+
+// Helpers...
+
+func genSamples(t testing.TB) []string {
+	t.Helper()
+
+	return []string{
+		"*** START OF THIS PROJECT GUTENBERG EBOOK MOBY DICK; OR THE WHALE ***",
+		"MOBY-DICK;",
+		`“Moby Dick?” shouted Ahab. “Do ye know the white whale then, Tash?”`,
+		"seen—Moby Dick—Moby Dick!”",
 	}
 }
