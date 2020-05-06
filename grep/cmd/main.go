@@ -24,11 +24,11 @@ func main() {
 		log.Fatalf("Unable to open file %s", fileName)
 	}
 
-	var count, lines int64
+	var count int64
 	scanner := bufio.NewScanner(file)
 	w := strings.ToLower(word)
 	for scanner.Scan() {
-		occ := grep.Count(w, scanner.Text())
+		occ := grep.WordCount(w, scanner.Text())
 		count += occ
 	}
 	if err := scanner.Err(); err != nil {

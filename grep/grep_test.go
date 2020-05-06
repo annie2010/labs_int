@@ -1,4 +1,5 @@
-// Copyright 2020 Imhotep Software All material is licensed under the Apache License Version 2.0
+// Copyright 2020 Imhotep Software
+// All material is licensed under the Apache License Version 2.0
 // http://www.apache.org/licenses/LICENSE-2.0
 
 package grep_test
@@ -10,7 +11,7 @@ import (
 	"gotest.tools/assert"
 )
 
-func TestCount(t *testing.T) {
+func TestWordCount(t *testing.T) {
 	uu := map[string]struct {
 		text string
 		e    int64
@@ -37,12 +38,12 @@ func TestCount(t *testing.T) {
 	for k := range uu {
 		u := uu[k]
 		t.Run(k, func(t *testing.T) {
-			assert.Equal(t, u.e, grep.Count("moby", u.text))
+			assert.Equal(t, u.e, grep.WordCount("moby", u.text))
 		})
 	}
 }
 
-func TestCount1(t *testing.T) {
+func TestWordCountBytes(t *testing.T) {
 	uu := map[string]struct {
 		text string
 		e    int64
@@ -69,27 +70,27 @@ func TestCount1(t *testing.T) {
 	for k := range uu {
 		u := uu[k]
 		t.Run(k, func(t *testing.T) {
-			assert.Equal(t, u.e, grep.Count1("moby", u.text))
+			assert.Equal(t, u.e, grep.WordCountBytes("moby", u.text))
 		})
 	}
 }
 
-func BenchmarkCount(b *testing.B) {
+func BenchmarkWordCountV1(b *testing.B) {
 	const text = `Moby Dick?” shouted Ahab. “Do ye know the white whale then, Tash?`
 
 	b.ReportAllocs()
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
-		grep.Count("moby", text)
+		grep.WordCount("moby", text)
 	}
 }
 
-func BenchmarkCount1(b *testing.B) {
+func BenchmarkWordCountV2(b *testing.B) {
 	const text = `Moby Dick?” shouted Ahab. “Do ye know the white whale then, Tash?`
 
 	b.ReportAllocs()
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
-		grep.Count1("moby", text)
+		grep.WordCountBytes("moby", text)
 	}
 }
