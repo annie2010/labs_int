@@ -13,7 +13,9 @@
 ---
 ## <img src="../../assets/lab.png" width="auto" height="32"/> Mission
 
-> Package deal! Implement two separate modules aka dictionary and picker. The dictionary module produces a list of words from a given dictionary. The picker modules picks a random word for the dictionary module.
+> Package deal!
+
+> Implement two separate modules aka dictionary and picker. The dictionary module produces a list of words from a given dictionary. The picker modules picks a random word leveraging the dictionary module.
 
 * Clone the [Labs Repo](https://github.com/gopherland/labs_int)
 * cd modules
