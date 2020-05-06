@@ -11,7 +11,7 @@ import (
 	"gotest.tools/assert"
 )
 
-func TestWordCount(t *testing.T) {
+func TestWordCountV1(t *testing.T) {
 	uu := map[string]struct {
 		text string
 		e    int64
@@ -43,7 +43,7 @@ func TestWordCount(t *testing.T) {
 	}
 }
 
-func TestWordCountBytes(t *testing.T) {
+func TestWordCountV2(t *testing.T) {
 	uu := map[string]struct {
 		text string
 		e    int64
