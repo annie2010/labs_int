@@ -26,3 +26,16 @@ func BenchmarkWordCountV1(b *testing.B) {
 func BenchmarkWordCountV2(b *testing.B) {
 	<<!!YOUR_CODE!!>> -- Implement the v2 benchmark
 }
+
+// Helpers...
+
+func genSamples(t testing.TB) []string {
+	t.Helper()
+
+	return []string{
+		"*** START OF THIS PROJECT GUTENBERG EBOOK MOBY DICK; OR THE WHALE ***",
+		"MOBY-DICK;",
+		`“Moby Dick?” shouted Ahab. “Do ye know the white whale then, Tash?”`,
+		"seen—Moby Dick—Moby Dick!”",
+	}
+}
