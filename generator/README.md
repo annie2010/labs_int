@@ -4,43 +4,42 @@
 <br/>
 <br/>
 
-# Benchmarking Lab
+# Generator Lab
 
 ---
-## <img src="../assets/lab.png" width="auto" height="32"/> Mission
+## <img src="../assets/lab.png" width="auto" height="32"/> Your Mission
 
-> Implement Grep!
+> Implement Generics in GO++!
 
-> Your CLI application should take a word and a file name args and
-> report back the number of occurrences of the word in the file.
+> Using GO generate, write a program to create stack data structure templates a couple data types.
 
-* Clone the [labs repo](https://github.com/gopherland/labs_int)
-* Cd grep
-* An initial implementation of `CountWord` function is provided
-* Implement a test for the `CountWord` function
-* Benchmark your CountWord function.
-* Is it cpu or memory bound?
-* Using `benchstat` checkout to variation and make sure you have a solid measurement.
-* Can you speed up your initial implementation?
-* Implement and test a second implementation.
-* Using `benchstat` compare your first and second implementations.
+1. Clone the [Labs Repo](https://github.com/gopherland/labs_int)
+1. cd generator
+1. Annotate generator/main.go to call `stacker` cli to generate templated stacks implementation
+   1. Stacker should takes 2 arguments:
+      1. -t type1,type2 specifying which types of stacks to generate
+      1. -p the name of the package to generate the implementation destination
+   2. Generate 2 stacks implementation for: float64 and i1t32
+1. cd stacker
+1. Implement stacker (stacker/main.go) to generate a templated stack and its associated test
+   1. The GO templates for both source and test are given (see tpl.go)
+   2. Implement stacker to generate the stacks code and test in the package location
+   3. Test your implementation by generating a couple templatized stacks
+   4. Run your test samples!
+   5. Install stacker on your system so it's available in your path ie GOBIN is set and in your PATH
+1. Back in the generator directory edit generator/main.go
+   1. Generate your code so that generator/main.go finds your generated types: stacks.Float64 and stacks.Int32
+   2. Make sure your stacks import path is set
+   3. Run your tests!
+   4. Run your main application to ensure both stacks implementations are operating as expected!
 
-### Setup
+### Expectations
 
-```shell
-# Install benchstat
-# IMPORTANT! Make sure GOBIN is set to $HOME/gopherland/bin and is in your PATH!!
-go env GOBIN
-# Set if NOT SET!
-go env -w GOBIN=$HOME/gopherland/bin
-go get -u golang.org/x/perf/cmd/benchstat
-```
+The output from generator/main.go should look like this...
 
-### Commands
-
-```shell
-# Normalize output so they have the same benchmark name
-sed -i '' 's/V1//g' v1.out && sed -i '' 's/V2//g' v2.out
+```go
+2020/05/07 14:45:18 🥞 <<Float>> Pop:42.25 -- Top:20.2 -- Peek:20.2,10.5
+2020/05/07 14:45:18 📚 <<Float>> Pop:300 -- Top:100 -- Peek:100,200
 ```
 
 ---
