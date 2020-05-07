@@ -34,6 +34,9 @@
     service API
 15. Now the surprise!
     Compare the size of this new image you've just build vs the old image?
+16. BONUS! Publish your Picker Servie Docker image
+    1. Publish your image on a public registry (DockerHub, Quay,...)
+    2. Share your image url with your classmates so they can check out your work!
 
 ## Installation
 
