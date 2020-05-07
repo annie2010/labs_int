@@ -31,7 +31,7 @@ func tryFloat() {
 	}
 
 	cyan, green := color.FgCyan.Render, color.FgGreen.Render
-	log.Printf("🥞 <<%5s>> Pop:%v -- Top:%v -- Peek:%v", "Float", cyan(v), green(s.Top()), &s)
+	log.Printf("🥞 %-10s Pop:%v -- Top:%s -- Peek:%v", "Float64", cyan(v), green(s.Top()), &s)
 }
 
 func tryInt() {
@@ -45,5 +45,5 @@ func tryInt() {
 	}
 
 	cyan, green := color.FgCyan.Render, color.FgGreen.Render
-	log.Printf("📚 <<%5s>> Pop:%v -- Top:%v -- Peek:%v", "Float", cyan(v), green(s.Top()), &s)
+	log.Printf("📚 %-10s Pop:%v   -- Top:%s  -- Peek:%v", "Int32", cyan(v), green(s.Top()), &s)
 }

@@ -38,8 +38,8 @@
 The output from generator/main.go should look like this...
 
 ```go
-2020/05/07 14:45:18 🥞 <<Float>> Pop:42.25 -- Top:20.2 -- Peek:20.2,10.5
-2020/05/07 14:45:18 📚 <<Float>> Pop:300 -- Top:100 -- Peek:100,200
+2020/05/07 15:28:15 🥞 Float64    Pop:42.25 -- Top:20.2 -- Peek:20.2,10.5
+2020/05/07 15:28:15 📚 Int32      Pop:300   -- Top:100  -- Peek:100,200
 ```
 
 ---
