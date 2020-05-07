@@ -21,7 +21,7 @@ func TestLoadHandler(t *testing.T) {
 		r, _ = http.NewRequest("GET", "http://example.com/api/v1/load", nil)
 	)
 
-	q := url.Values{"name": []string{"musicians"}}
+	q := url.Values{"dictionary": []string{"musicians"}}
 	r.URL.RawQuery = q.Encode()
 
 	h := New("../assets")
