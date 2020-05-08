@@ -25,7 +25,7 @@
   + Is this service CPU/Mem or IO bound?
 + Use Benchmarking to assert your profiling experimentation and improvements.
 + Using benchstat compare v1 vs v2. What gains do you see?
-+ What do you notice and what can you improve?
++ What do you notice and what can you improve? hint (pre-compute another fib#)
 + Tune the implementation and repeat the profiling process to produce the best possible results.
 
 ### Commands
