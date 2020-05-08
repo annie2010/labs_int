@@ -15,8 +15,6 @@
 + `fib(1) = 1`
 + `fib(n) = fib(n-2)+fib(n-1)`
 
-<br/>
-
 + Clone the [Labs Repo](https://github.com/gopherland/labs_int)
 + Cd profiling
 + A Fib service initial implementation has been provided for you.
