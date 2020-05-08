@@ -21,15 +21,5 @@ func TestCountHandler(t *testing.T) {
 		r, _ = http.NewRequest("GET", "http://example.com/v1/wc/3lpigs/pig", nil)
 	)
 
-	mx := mux.NewRouter()
-	mx.HandleFunc(`/v1/wc/{book:[\w]+}/{word:[\w]+}`, handler.CountHandler)
-	mx.ServeHTTP(rr, r)
-
-	assert.Equal(t, http.StatusOK, rr.Code)
-	var resp handler.Response
-	err := json.NewDecoder(rr.Body).Decode(&resp)
-	assert.Nil(t, err)
-	assert.Equal(t, int64(26), resp.Occurrences)
-	assert.Equal(t, "3lpigs", resp.Book)
-	assert.Equal(t, "pig", resp.Word)
+	<<!!YOUR_CODE!!>> -- Test your CountHandler -- make sure to leverage your mux router to
 }
