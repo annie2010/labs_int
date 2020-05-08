@@ -7,7 +7,7 @@ package fib_test
 import (
 	"testing"
 
-	"github.com/gopherland/ntnx_labs/performance/fib"
+	"github.com/gopherland/labs_int/profiling/internal/fib"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -27,12 +27,28 @@ var uu = []struct {
 	{10, 55},
 }
 
-func TestFibCompute(t *testing.T) {
+func TestFibRec(t *testing.T) {
 	for _, u := range uu {
 		assert.Equal(t, u.e, fib.Compute(u.n))
 	}
 }
 
-func BenchmarkFibCompute(b *testing.B) {
-	// !!YOUR_CODE!!
+func TestComputeIter(t *testing.T) {
+	for _, u := range uu {
+		assert.Equal(t, u.e, fib.ComputeIter(u.n))
+	}
+}
+
+func BenchmarkFibRec(b *testing.B) {
+	b.ReportAllocs()
+	for i := 0; i < b.N; i++ {
+		fib.Compute(20)
+	}
+}
+
+func BenchmarkFibIter(b *testing.B) {
+	b.ReportAllocs()
+	for i := 0; i < b.N; i++ {
+		fib.ComputeIter(20)
+	}
 }
