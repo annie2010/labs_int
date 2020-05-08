@@ -23,7 +23,8 @@
 + Using profiling technics, establish the service performance profile and baseline.
   + Record initial numbers gathered via hey or apache bench
   + Is this service CPU/Mem or IO bound?
-+ Leverage MicroBenchmarks to assert your profiling experimentation and improvements.
++ Use Benchmarking to assert your profiling experimentation and improvements.
++ Using benchstat compare v1 vs v2. What gains do you see?
 + What do you notice and what can you improve?
 + Tune the implementation and repeat the profiling process to produce the best possible results.
 
@@ -35,6 +36,8 @@
 + Check your CPU profile
 
 ```shell
+# Install benchstat
+go get golang.org/x/perf/cmd/benchstat
 # Run Fib server
 go run cmd/main.go
 # Check endpoint

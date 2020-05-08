@@ -27,7 +27,7 @@ var uu = []struct {
 	{10, 55},
 }
 
-func TestFibRec(t *testing.T) {
+func TestCompute(t *testing.T) {
 	for _, u := range uu {
 		assert.Equal(t, u.e, fib.Compute(u.n))
 	}
@@ -39,15 +39,13 @@ func TestComputeIter(t *testing.T) {
 	}
 }
 
-func BenchmarkFibRec(b *testing.B) {
-	b.ReportAllocs()
+func BenchmarkComputeRec(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		fib.Compute(20)
 	}
 }
 
-func BenchmarkFibIter(b *testing.B) {
-	b.ReportAllocs()
+func BenchmarkComputeIter(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		fib.ComputeIter(20)
 	}
