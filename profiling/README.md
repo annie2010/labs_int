@@ -1,4 +1,4 @@
-<img src="../../assets/gophernand.png" align="right" width="128" height="auto"/>
+<img src="../assets/gophernand.png" align="right" width="128" height="auto"/>
 
 <br/>
 <br/>
@@ -7,7 +7,7 @@
 # Profiling Lab
 
 ---
-## <img src="../../assets/lab.png" width="auto" height="32"/> Mission
+## <img src="../assets/lab.png" width="auto" height="32"/> Mission
 
 > Implement a Fibonacci number web service that produces the first n Fibonacci numbers given n as input.
 
@@ -43,5 +43,5 @@ hey -c 2 -n 100000 http://localhost:4500/fib?n=20
 ```
 
 ---
-<img src="../../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
+<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
