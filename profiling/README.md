@@ -11,9 +11,11 @@
 
 > Implement a Fibonacci number web service that produces the first n Fibonacci numbers given n as input.
 
-+ `fib(0) = 0`
-+ `fib(1) = 1`
-+ `fib(n) = fib(n-2)+fib(n-1)`
+  ```text
+    fib(0) = 0
+    fib(1) = 1
+    fib(n) = fib(n-2)+fib(n-1)
+  ```
 
 + Clone the [Labs Repo](https://github.com/gopherland/labs_int)
 + Cd profiling
