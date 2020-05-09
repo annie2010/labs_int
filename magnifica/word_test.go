@@ -12,7 +12,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestWordMarshal(t *testing.T) {
+func TestEntryMarshal(t *testing.T) {
 	e := magnifica.Entry{
 		Dictionary: "slang",
 		Location:   "/acme/english",
@@ -24,7 +24,7 @@ func TestWordMarshal(t *testing.T) {
 	assert.Equal(t, string(raw), string(bb))
 }
 
-func TestWordUnmarshal(t *testing.T) {
+func TestEntryUnmarshal(t *testing.T) {
 	var e magnifica.Entry
 	err := json.Unmarshal([]byte(raw), &e)
 
