@@ -4,7 +4,6 @@ import (
 	"crypto/md5"
 	"fmt"
 	"io/ioutil"
-	"os"
 	"path/filepath"
 	"sort"
 	"sync"
@@ -41,7 +40,6 @@ func md5All(dir string) error {
 	for _, k := range keys {
 		fmt.Printf("%x  %s\n", mm[k], k)
 	}
-
 	if err, ok := <-errc; ok {
 		return err
 	}
@@ -53,30 +51,28 @@ func md5Walk(dir string) (<-chan digest, <-chan error) {
 	out, errc := make(chan digest), make(chan error, 1)
 	var wg sync.WaitGroup
 
-	e := filepath.Walk(dir, func(p string, i os.FileInfo, err error) error {
-		if err != nil {
-			return err
-		}
-		if i.IsDir() {
-			return nil
-		}
-
+	files, err := ioutil.ReadDir(dir)
+	if err != nil {
+		errc <- err
+		return out, errc
+	}
+	for _, f := range files {
 		wg.Add(1)
-		go func() {
+		go func(f string) {
 			defer wg.Done()
-			raw, err := ioutil.ReadFile(p)
+			raw, err := ioutil.ReadFile(filepath.Join(dir, f))
+			if err != nil {
+				fmt.Println(err)
+				errc <- err
+				return
+			}
 			d := digest{
-				file: p,
+				file: f,
 				err:  err,
 			}
 			d.digest(raw)
 			out <- d
-		}()
-
-		return nil
-	})
-	if e != nil {
-		errc <- e
+		}(f.Name())
 	}
 
 	go func() {
