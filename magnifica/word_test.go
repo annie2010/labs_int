@@ -13,11 +13,25 @@ import (
 )
 
 func TestEntryMarshal(t *testing.T) {
-	<<!!YOUR_CODE!!>> -- marshall a magnifica dictionary entry to ACME
+	e := magnifica.Entry{
+		Dictionary: "slang",
+		Location:   "/acme/english",
+		Word:       "bumblebeetuna",
+	}
+
+	bb, err := json.Marshal(&e)
+	assert.Nil(t, err)
+	assert.Equal(t, string(raw), string(bb))
 }
 
 func TestEntryUnmarshal(t *testing.T) {
-	<<!!YOUR_CODE!!>> -- unmarshal an ACME entry to a Magnifica dictionary entry
+	var e magnifica.Entry
+	err := json.Unmarshal([]byte(raw), &e)
+
+	assert.Nil(t, err)
+	assert.Equal(t, "slang", e.Dictionary)
+	assert.Equal(t, "/acme/english/", e.Location)
+	assert.Equal(t, "bumblebeetuna", e.Word)
 }
 
 const raw = `{"dictionary_location":"/acme/english/slang","dictionary_word":"bumblebeetuna","political_correctness":false}`
