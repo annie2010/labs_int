@@ -6,7 +6,7 @@
 
 # Gopherland Labs (Intermediate)
 
-This repository contains lab solutions for the GopherLand training materials.
+This repository contains labs from the Intermediate GopherLand training materials.
 
 ---
 <img src="assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
