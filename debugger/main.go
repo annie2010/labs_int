@@ -77,7 +77,6 @@ func md5Walk(dir string) (<-chan digest, <-chan error) {
 
 	go func() {
 		wg.Wait()
-		close(errc)
 	}()
 
 	return out, errc
