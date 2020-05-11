@@ -7,7 +7,7 @@
 # JSON Marshaller Lab...
 
 ---
-## <img src="../../assets/lab.png" width="auto" height="32"/> Your Mission
+## <img src="../assets/lab.png" width="auto" height="32"/> Your Mission
 
 > Encyclopedia Magnifica!
 
@@ -23,7 +23,7 @@
   * Vendor string
   * Word string
   * slang bool (private)
-* Implement a Marshaller to interface with our new vendor ACME Dictionary.
+* Implement a Marshaler to interface with our new vendor ACME Dictionary.
   * The ACME JSON API exposes the following fields:
     * dictionary_location string
     * dictionary_word string
@@ -34,5 +34,5 @@
 * Ensure all your test are producing the desired outputs!
 
 ---
-<img src="../../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
+<img src="../assets/imhotep_logo.png" width="32" height="auto"/> © 2020 Imhotep Software LLC.
 All materials licensed under [Apache v2.0](http://www.apache.org/licenses/LICENSE-2.0)
