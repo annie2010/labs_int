@@ -32,15 +32,7 @@ func WordCountBytes(word, line string) (count int64) {
 		l     = strings.ToLower(line)
 	)
 	for _, b := range []byte(l) {
-		if b != word[index] {
-			index = 0
-			continue
-		}
-		index++
-		if index == len(word) {
-			count++
-			index = 0
-		}
+		<<!!YOUR_CODE!!>> Iterate thru the line a byte at a time and compare with the byte in the word
 	}
 
 	return
